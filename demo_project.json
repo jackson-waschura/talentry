@@ -1,0 +1,61 @@
+{
+    "name": "Demo Project",
+    "trees": [
+        {
+            "name": "Warrior Path",
+            "description": "A tree focusing on melee combat skills.",
+            "talents": [
+                {
+                    "name": "Basic Strike",
+                    "description": "Increases basic attack damage.",
+                    "level_requirements": ["Level 1"],
+                    "level": 1,
+                    "max_level": 5,
+                    "children": ["Power Attack", "Improved Armor"],
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                {
+                    "name": "Power Attack",
+                    "description": "A powerful attack that consumes stamina.",
+                    "level_requirements": ["Level 1: +10% Damage", "Level 2: +20% Damage"],
+                    "level": 0,
+                    "max_level": 2,
+                    "children": ["Cleave"],
+                    "x": 200.0,
+                    "y": -200.0
+                },
+                {
+                    "name": "Improved Armor",
+                    "description": "Increases armor rating.",
+                    "level_requirements": ["Level 1: +5 Armor", "Level 2: +10 Armor", "Level 3: +15 Armor"],
+                    "level": 0,
+                    "max_level": 3,
+                    "children": ["Shield Mastery"],
+                    "x": 200.0,
+                    "y": 200.0
+                },
+                {
+                    "name": "Cleave",
+                    "description": "Attack multiple enemies in front of you.",
+                    "level_requirements": ["Requires Power Attack Level 2"],
+                    "level": 0,
+                    "max_level": 1,
+                    "children": [],
+                    "x": 400.0,
+                    "y": -200.0
+                },
+                {
+                    "name": "Shield Mastery",
+                    "description": "Improves blocking effectiveness.",
+                    "level_requirements": ["Requires Improved Armor Level 3"],
+                    "level": 0,
+                    "max_level": 1,
+                    "children": [],
+                    "x": 400.0,
+                    "y": 200.0
+                }
+            ]
+        }
+    ]
+}

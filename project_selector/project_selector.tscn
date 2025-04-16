@@ -1,0 +1,182 @@
+[gd_scene load_steps=5 format=3 uid="uid://ebcepjw3xav0"]
+
+[ext_resource type="Script" path="res://project_selector/project_selector.gd" id="1_citd0"]
+[ext_resource type="Theme" uid="uid://0fva8xxptln6" path="res://common/main_theme.tres" id="1_xudei"]
+[ext_resource type="Texture2D" uid="uid://bx4fryvhesipe" path="res://common/ui/Divider/divider-004.png" id="2_x21gc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kindb"]
+bg_color = Color(0.156863, 0.156863, 0.156863, 0.784314)
+
+[node name="ProjectSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xudei")
+script = ExtResource("1_citd0")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -57.5
+offset_right = 118.0
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Projects"
+horizontal_alignment = 1
+
+[node name="Dividers" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="left" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Dividers"]
+layout_mode = 2
+texture = ExtResource("2_x21gc")
+flip_h = true
+
+[node name="right" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Dividers"]
+layout_mode = 2
+texture = ExtResource("2_x21gc")
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 350)
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 32
+columns = 4
+
+[node name="NoProjectsLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/CenterContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(2.08165e-12, 200)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.470588)
+theme_override_font_sizes/font_size = 48
+text = "No projects yet! Create one below."
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="NewBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = " New Project "
+
+[node name="BackBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = " Back "
+
+[node name="DisablePanel" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kindb")
+
+[node name="Popup" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Popup"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PNameBox" type="LineEdit" parent="Popup/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Enter project name..."
+
+[node name="ErrorMessage" type="Label" parent="Popup/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2.08165e-12, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.989214, 0.378991, 0.367775, 1)
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="AcceptBtn" type="Button" parent="Popup/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Accept"
+
+[node name="ExitPopupBtn" type="Button" parent="Popup/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/NewBtn" to="." method="_on_new_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="Popup/MarginContainer/VBoxContainer/HBoxContainer/AcceptBtn" to="." method="_on_accept_btn_pressed"]
+[connection signal="pressed" from="Popup/MarginContainer/VBoxContainer/HBoxContainer/ExitPopupBtn" to="." method="_on_exit_popup_btn_pressed"]

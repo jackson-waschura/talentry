@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://eej3ac8o7rsk"]
+
+[ext_resource type="Texture2D" uid="uid://cqqjk8chjao6g" path="res://common/ui/Border/panel-border-016.png" id="1_3pq8x"]
+[ext_resource type="Script" path="res://tree_viewer/talent_node.gd" id="1_ow0wt"]
+[ext_resource type="Texture2D" uid="uid://y5eu62fykmm3" path="res://common/images/talentry_logo_v0.png" id="1_rg22w"]
+[ext_resource type="Theme" uid="uid://0fva8xxptln6" path="res://common/main_theme.tres" id="4_siy1s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2ele"]
+size = Vector2(140, 200)
+
+[node name="TalentNode" type="Node2D"]
+script = ExtResource("1_ow0wt")
+
+[node name="background" type="Sprite2D" parent="."]
+modulate = Color(0.819608, 0.713726, 0.568627, 1)
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(1.36458, 1.36458)
+texture = ExtResource("1_3pq8x")
+
+[node name="icon" type="Sprite2D" parent="."]
+texture = ExtResource("1_rg22w")
+
+[node name="child_anchor" type="Node2D" parent="."]
+position = Vector2(64, 2.08165e-12)
+
+[node name="parent_anchor" type="Node2D" parent="."]
+position = Vector2(-64, 2.08165e-12)
+
+[node name="title" type="Label" parent="."]
+custom_minimum_size = Vector2(130, 45)
+offset_left = -65.0
+offset_top = 70.0
+offset_right = 65.0
+offset_bottom = 115.0
+size_flags_horizontal = 4
+theme = ExtResource("4_siy1s")
+text = "Name of Talent"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="InputArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InputArea"]
+position = Vector2(2.08165e-12, 30)
+shape = SubResource("RectangleShape2D_j2ele")
+
+[connection signal="input_event" from="InputArea" to="." method="_on_input_area_input_event"]

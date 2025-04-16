@@ -1,0 +1,109 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3h8w2i7eiyb6"]
+
+[ext_resource type="Theme" uid="uid://0fva8xxptln6" path="res://common/main_theme.tres" id="1_ysw5t"]
+[ext_resource type="Script" path="res://main_menu/main_menu.gd" id="2_4kmoo"]
+[ext_resource type="Texture2D" uid="uid://bx4fryvhesipe" path="res://common/ui/Divider/divider-004.png" id="2_6pamd"]
+[ext_resource type="Texture2D" uid="uid://y5eu62fykmm3" path="res://common/images/talentry_logo_v0.png" id="4_i7dxg"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ysw5t")
+script = ExtResource("2_4kmoo")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "Talentry"
+horizontal_alignment = 1
+
+[node name="Dividers" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="left" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Dividers"]
+layout_mode = 2
+texture = ExtResource("2_6pamd")
+flip_h = true
+
+[node name="right" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/Dividers"]
+layout_mode = 2
+texture = ExtResource("2_6pamd")
+
+[node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 64)
+layout_mode = 2
+
+[node name="OpenProjectBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Open Project"
+
+[node name="SettingsBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="ExitBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.9
+anchor_right = 0.75
+anchor_bottom = 1.0
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Logo" type="TextureRect" parent="HBoxContainer"]
+self_modulate = Color(1, 0.811765, 0.552941, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_i7dxg")
+expand_mode = 1
+
+[node name="Version" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "v0.1"
+
+[node name="Author" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "by Jackson"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/OpenProjectBtn" to="." method="_on_open_project_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ExitBtn" to="." method="_on_exit_btn_pressed"]

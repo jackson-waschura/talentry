@@ -1,0 +1,15 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bcplyhkw1u50c"]
+
+[ext_resource type="Texture2D" uid="uid://cjm6jqsp2ourv" path="res://common/ui/Border/panel-border-024.png" id="1_klk3m"]
+
+[resource]
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_right = 40.0
+content_margin_bottom = 40.0
+texture = ExtResource("1_klk3m")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+modulate_color = Color(0.886275, 1, 0.780392, 1)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ric73vmfrwr4"]
+
+[ext_resource type="Script" path="res://game_controller.gd" id="1_0o8le"]
+[ext_resource type="PackedScene" uid="uid://c3h8w2i7eiyb6" path="res://main_menu/main_menu.tscn" id="2_e871f"]
+
+[node name="GameController" type="Node" node_paths=PackedStringArray("world_2d", "gui")]
+script = ExtResource("1_0o8le")
+world_2d = NodePath("World2D")
+gui = NodePath("GUI")
+
+[node name="World2D" type="Node2D" parent="."]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="GUI" instance=ExtResource("2_e871f")]
